@@ -1,0 +1,34 @@
+#######################################
+# Syntax Coloring Map For Test
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MotorControler	KEYWORD1
+Motor	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+turnRight	KEYWORD2
+turnLeft	KEYWORD2
+goForward	KEYWORD2
+goBackward	KEYWORD2
+stopRun	KEYWORD2
+updateRightEncoder	KEYWORD2
+updateLeftEncoder	KEYWORD2
+allignWheels	KEYWORD2
+checkState	KEYWORD2
+run	KEYWORD2
+
+######################################
+# Instances (KEYWORD2)
+#######################################
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
