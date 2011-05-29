@@ -1,3 +1,6 @@
+/*
+* Written by Yazad Daruvala
+*/
 #include "ColorProcessor.h"
 #define RADIUS_THRESHHOLD 4
 

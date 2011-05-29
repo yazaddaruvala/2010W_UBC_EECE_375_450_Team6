@@ -1,8 +1,10 @@
+/*
+* Written by Yazad Daruvala
+*/
 #include "ImageProcessor.h"
 #define BALL_BOUNDS cvScalar(24, 126, 91), cvScalar(55,240,240)
 #include <math.h>
 
-//#define videoFrameROI cvRect(165, 0, 415, 480)
 #define videoFrameROI cvRect(155, 0, 425, 480)
 
 ImageProcessor::ImageProcessor( FrameCapturer * cap_p )
@@ -63,10 +65,10 @@ void ImageProcessor::overlayImage( IplImage * overlayImg,  IplImage * overlayMas
 	cvSetImageROI( overlayMask, videoFrameROI);
 	
 	cvRectangle( overlayImg, cvPoint(0, 0), cvPoint(getSize().width, getSize().height), CV_RGB(255,255,255), 5 );
-    cvRectangle( overlayMask, cvPoint(0, 0), cvPoint(getSize().width, getSize().height), CV_RGB(0,0,0), 5 );
+	cvRectangle( overlayMask, cvPoint(0, 0), cvPoint(getSize().width, getSize().height), CV_RGB(0,0,0), 5 );
 	if (getHomeLocation()){
-       cvRectangle( overlayImg, cvPoint(160, 30), cvPoint(250, 60), CV_RGB( 226, 150, 65), 2 );
-       cvRectangle( overlayMask, cvPoint(160, 30), cvPoint(250, 60), CV_RGB( 0, 0, 0), 2 );
+		cvRectangle( overlayImg, cvPoint(160, 30), cvPoint(250, 60), CV_RGB( 226, 150, 65), 2 );
+		cvRectangle( overlayMask, cvPoint(160, 30), cvPoint(250, 60), CV_RGB( 0, 0, 0), 2 );
 	} else {
 		cvRectangle( overlayImg, cvPoint(160, getSize().height - 30), cvPoint(250, getSize().height - 60), CV_RGB(226,150,65), 2 );
 		cvRectangle( overlayMask, cvPoint(160, getSize().height - 30), cvPoint(250, getSize().height - 60), CV_RGB(0,0,0), 2 );
@@ -86,7 +88,6 @@ void ImageProcessor::updateData( vector<FieldNode> * inputBalls, vector<FieldNod
 	obstacleProcessor->updateData( inputObstacles );
 	ourRobotProcessor->updateData( ourRobot );
 	enemyRobotProcessor->updateData( enemyRobot );
-
 }
 
 bool ImageProcessor::getHomeLocation( void ) {
@@ -236,19 +237,17 @@ IplImage * ImageProcessor::normalizeRGB(IplImage * img_p){
 	IplImage * Gimg = cvCreateImage(cvGetSize(img_p), 8, 1);
 	cvSplit(img_p, Bimg, Gimg, Rimg, NULL);
 	
-	for(int x=0;x<img_p->width;x++)
-    {
-        for(int y=0;y<img_p->height;y++)
-        {
+	for(int x=0;x<img_p->width;x++) {
+        	for(int y=0;y<img_p->height;y++) {
 			double redValue = cvGetReal2D(Rimg, y, x);
-            double greenValue = cvGetReal2D(Gimg, y, x);
-            double blueValue = cvGetReal2D(Bimg, y, x);
+			double greenValue = cvGetReal2D(Gimg, y, x);
+			double blueValue = cvGetReal2D(Bimg, y, x);
 			double sum = sqrt((redValue*redValue) + (greenValue*greenValue) + (blueValue*blueValue));
-		    cvSetReal2D(Rimg, y, x, (redValue/sum)*255);
-            cvSetReal2D(Gimg, y, x, (greenValue/sum)*255);
-            cvSetReal2D(Bimg, y, x, (blueValue/sum)*255);
-        }
-    }
+			cvSetReal2D(Rimg, y, x, (redValue/sum)*255);
+			cvSetReal2D(Gimg, y, x, (greenValue/sum)*255);
+			cvSetReal2D(Bimg, y, x, (blueValue/sum)*255);
+		}
+	}
 	cvMerge(Bimg, Gimg, Rimg, NULL, img_p);
 	return img_p;
 }

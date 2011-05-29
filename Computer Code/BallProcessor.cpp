@@ -1,3 +1,6 @@
+/*
+* Written by Yazad Daruvala
+*/
 #include "BallProcessor.h"
 
 BallProcessor::BallProcessor( void ): Processor()
@@ -14,7 +17,6 @@ BallProcessor::BallProcessor( void ): Processor()
 BallProcessor::~BallProcessor(void)
 {
 }
-
 
 void BallProcessor::process( vector<IplImage *> *input ){
 	IplImage * threshed = arrayToThreshed(input, cvScalar( hueLower,  satLower, valLower), cvScalar( hueUpper,  satUpper, valUpper) );

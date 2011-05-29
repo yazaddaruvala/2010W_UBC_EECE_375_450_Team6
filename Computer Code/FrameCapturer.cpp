@@ -48,8 +48,7 @@ void FrameCapturer::setFPS(const unsigned int fps){
 	if (fps > 1000)
 		delay = 1;
 	else
-		delay = (1000/fps);
-	
+		delay = (1000/fps);	
 }
 
 unsigned int FrameCapturer::getFPS( void ) const{

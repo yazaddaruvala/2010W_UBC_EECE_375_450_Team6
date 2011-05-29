@@ -1,3 +1,6 @@
+/*
+* Written by Yazad Daruvala
+*/
 #include "ProjectGUI.h"
 
 #define FRAME_POSITION 10, 116

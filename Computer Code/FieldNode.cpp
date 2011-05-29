@@ -1,3 +1,6 @@
+/*
+* Written by Yazad Daruvala
+*/
 #include "FieldNode.h"
 
 FieldNode::FieldNode( const int xp, const int yp, const int rad ): Node(xp, yp)

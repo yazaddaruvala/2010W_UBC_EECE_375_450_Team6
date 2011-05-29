@@ -1,3 +1,6 @@
+/*
+* Written by Yazad Daruvala
+*/
 #include <cv.h>
 #include <highgui.h>
 using namespace cv;
